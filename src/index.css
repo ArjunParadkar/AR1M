@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -230,4 +231,417 @@ canvas {
 
 .labs h1 {
   font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Weekly Highlights ── */
+.wh-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.wh-rule {
+  width: 5rem;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent);
+  margin: 1rem auto 0;
+}
+
+.wh-slot-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.wh-arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.wh-arrow-btn:hover:not(:disabled) {
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+}
+.wh-arrow-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.wh-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+}
+.wh-dot-active {
+  background: rgba(255,255,255,0.85);
+  transform: scale(1.25);
+}
+
+.wh-caption {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+/* ── Expo Banner Section ── */
+.expo-banner-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 1.25rem 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.expo-banner-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%,
+    rgba(0, 60, 120, 0.55) 0%,
+    rgba(0, 20, 60, 0.4) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.expo-banner-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.expo-banner-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.expo-banner-eyebrow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.55rem, 1.1vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(140, 200, 255, 0.6);
+}
+
+.expo-banner-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(100, 180, 255, 0.9),
+    0 0 50px rgba(80, 160, 255, 0.6),
+    0 0 100px rgba(60, 130, 255, 0.35),
+    0 0 180px rgba(40, 100, 255, 0.2);
+  animation: expo-title-pulse 3s ease-in-out infinite;
+}
+
+@keyframes expo-title-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(100, 180, 255, 0.9),
+      0 0 50px rgba(80, 160, 255, 0.6),
+      0 0 100px rgba(60, 130, 255, 0.35),
+      0 0 180px rgba(40, 100, 255, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(140, 210, 255, 1),
+      0 0 70px rgba(100, 180, 255, 0.75),
+      0 0 130px rgba(80, 150, 255, 0.45),
+      0 0 220px rgba(60, 120, 255, 0.25);
+  }
+}
+
+.expo-banner-quote {
+  font-style: italic;
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  color: rgba(160, 210, 255, 0.5);
+  letter-spacing: 0.03em;
+  margin-top: 0.75rem;
+  max-width: 520px;
+}
+
+.expo-banner-quote-attr {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.55rem, 0.9vw, 0.7rem);
+  letter-spacing: 0.15em;
+  color: rgba(120, 180, 255, 0.35);
+  margin-top: 0.2rem;
+}
+
+.expo-banner-date {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.9rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: rgba(160, 210, 255, 0.75);
+  margin-top: 0.5rem;
+}
+
+.expo-banner-btn {
+  margin-top: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(100, 180, 255, 0.5);
+  padding: 0.8em 2.5em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 16px rgba(80, 160, 255, 0.2), inset 0 0 16px rgba(80, 160, 255, 0.05);
+}
+.expo-banner-btn:hover {
+  background: rgba(80, 160, 255, 0.15);
+  border-color: rgba(140, 200, 255, 0.9);
+  box-shadow: 0 0 30px rgba(100, 180, 255, 0.4), inset 0 0 20px rgba(80, 160, 255, 0.1);
+}
+
+.expo-banner-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, transparent, #000);
+  pointer-events: none;
+}
+
+/* ── Expo Page ── */
+.expo-eyebrow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1rem;
+}
+
+.expo-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 60px rgba(100,140,255,0.3);
+  line-height: 1;
+}
+
+.expo-date-line {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1.2rem;
+}
+
+.expo-countdown-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1.2rem;
+}
+
+.expo-counter-box {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.75rem;
+  padding: 0.6em 0.8em;
+  min-width: 4ch;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.expo-counter-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.expo-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.expo-body {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+}
+
+.expo-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.expo-info-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.expo-info-icon {
+  font-size: 1.5rem;
+}
+
+.expo-info-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.expo-info-body {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.expo-bullet {
+  font-family: 'Orbitron', sans-serif;
+  color: rgba(100,140,255,0.8);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+/* ── Expo Signup Forms ── */
+.expo-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.expo-form-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.expo-form-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.7em 1em;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.expo-form-input:focus {
+  border-color: rgba(100,180,255,0.6);
+  background: rgba(255,255,255,0.06);
+}
+.expo-form-input option {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.expo-tab-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.6em 1.4em;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.45);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.expo-tab-btn:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+.expo-tab-active {
+  color: #fff !important;
+  border-color: rgba(100,180,255,0.7) !important;
+  background: rgba(80,160,255,0.1) !important;
+  box-shadow: 0 0 14px rgba(80,160,255,0.2);
+}
+
+/* ── Hero electric title ── */
+.arenda-electric-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  margin-top: 60px;
+}
+
+.tagline-char {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.4rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
