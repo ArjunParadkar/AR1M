@@ -1,19 +1,29 @@
-import { heroVideo } from '../utils';
-import { useEffect, useRef, useState } from 'react';
+import ArendaLogoMark from './ArendaLogoMark';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TAGLINE = 'Build The Future';
 
 const Hero = () => {
-  const videoSrc = heroVideo;
-  const [videoEnded, setVideoEnded] = useState(false);
+  const logoRef = useRef(null);
+  const sectionRef = useRef(null);
+  const stageRef = useRef(null);
   const titleRef = useRef(null);
   const charsRef = useRef([]);
 
   useEffect(() => {
-    if (!videoEnded) return;
+    const ctx = gsap.context(() => {
+    const tl = gsap.timeline({ delay: 0.3 });
+    const q = sel => logoRef.current.querySelectorAll(sel);
 
-    const tl = gsap.timeline();
+    // Gold sparkle runs around every line of the logo, then the mark fills in
+    tl.to(q('.logo-tail'), { attr: { 'stroke-dashoffset': -1 }, duration: 2.4, ease: 'power1.inOut', stagger: 0.07 }, 0)
+      .to(q('.logo-spark'), { attr: { 'stroke-dashoffset': -1.148 }, duration: 2.4, ease: 'power1.inOut', stagger: 0.07 }, 0)
+      .to(q('.logo-fill'), { attr: { 'fill-opacity': 1 }, duration: 0.9, ease: 'power2.out', stagger: 0.04 }, 2.0)
+      .set(q('.logo-tail, .logo-spark'), { opacity: 0 }, 3.4);
 
     // Electric flicker appearance for "Arenda Innovations"
     tl.set(titleRef.current, { opacity: 0, textShadow: 'none' })
@@ -54,49 +64,50 @@ const Hero = () => {
         },
         '+=0.15'
       );
-  }, [videoEnded]);
+
+    // Hero is its own pinned page: on scroll it zooms out and dims with
+    // resistance (smoothed scrub) while the next section slides over it.
+    gsap.to(stageRef.current, {
+      scale: 0.55,
+      opacity: 0.15,
+      filter: 'blur(6px)',
+      ease: 'power2.in',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: '+=100%',
+        pin: true,
+        pinSpacing: false,
+        scrub: 1.5,
+        anticipatePin: 1,
+      },
+    });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="w-full bg-black relative flex flex-col" id="hero">
-      <div className="flex flex-col w-full">
-        <div className="w-full flex-center">
-          <div className="md:w-10/12 w-9/12 flex-center">
-            <video
-              className="pointer-events-none"
-              autoPlay
-              muted
-              playsInline
-              onTimeUpdate={e => {
-                const v = e.target;
-                if (!videoEnded && v.duration && v.currentTime >= v.duration - 4) {
-                  setVideoEnded(true);
-                }
-              }}
-              onEnded={() => setVideoEnded(true)}
-              key={videoSrc}
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
+    <section ref={sectionRef} className="w-full h-screen bg-black relative overflow-hidden" id="hero">
+      <div ref={stageRef} className="absolute inset-0 flex flex-col items-center justify-center will-change-transform">
+        <ArendaLogoMark ref={logoRef} className="relative z-10 h-[42vh] w-auto aspect-square mt-16" />
+
+        <div className="relative z-10 flex flex-col items-center gap-3 px-5 -mt-2">
+          <h1 ref={titleRef} className="arenda-electric-title" style={{ marginTop: 0 }}>
+            Arenda Innovations
+          </h1>
+          <div className="flex flex-wrap justify-center">
+            {TAGLINE.split('').map((char, i) => (
+              <span
+                key={i}
+                ref={el => { charsRef.current[i] = el; }}
+                className="tagline-char"
+                style={{ opacity: 0, whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+              >
+                {char}
+              </span>
+            ))}
           </div>
         </div>
-
-        <div className="flex flex-col items-center pb-10 gap-3 -mt-[80px] relative z-10">
-        <h1 ref={titleRef} className="arenda-electric-title">
-          Arenda Innovations
-        </h1>
-        <div className="flex flex-wrap justify-center">
-          {TAGLINE.split('').map((char, i) => (
-            <span
-              key={i}
-              ref={el => { charsRef.current[i] = el; }}
-              className="tagline-char"
-              style={{ opacity: 0, whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-            >
-              {char}
-            </span>
-          ))}
-        </div>
-      </div>
       </div>
     </section>
   );

@@ -24,7 +24,7 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0, 
 });
 
-document.title = 'Arenda';
+document.title = 'Arenda Innovations';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

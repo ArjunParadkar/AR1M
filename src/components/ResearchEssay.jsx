@@ -9,25 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ResearchEssay = () => {
     const essayRef = useRef(null);
-    const titleRef = useRef(null);
-  
+
     useEffect(() => {
-      // GSAP animations for text
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: -30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
-  
       gsap.fromTo(essayRef.current,
         { opacity: 0, y: 50 },
         {
@@ -51,14 +34,6 @@ const ResearchEssay = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-black to-purple-900/20"></div>
   
         <div className="w-full relative z-10">
-          {/* Title Section */}
-          <div ref={titleRef} className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-              Arenda Research
-            </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full"></div>
-          </div>
-  
           {/* Main Essay/Content Section */}
           <div ref={essayRef} className="w-full">
                                            <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-2xl">

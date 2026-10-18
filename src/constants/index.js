@@ -6,7 +6,7 @@ import {
   highlightThirdVideo,
 } from "../utils";
 
-export const navLists = ["Home", "Labs", "Founders", "Contact"];
+export const navLists = ["Home", "Founders", "Contact"];
 
 export const navLinks = [
   { href: "#home", label: "Home" },
@@ -299,6 +299,14 @@ export const founders = [
     description: "Naman Guggilam is a BHS student passionate about Theoretical Physics. He is very ambitious and is intensely driven by curiosity. He thrives on self-study, exploring any subject (mainly physics) that fuels his ambition.  Naman believes that reaching great goals requires intense hard work, discipline, and determination, and he values knowledge as the key to transformation.",
     imageUrl: "/assets/images/Naman1.png",
     orientation: "right"
+  },
+  {
+    id: 5,
+    name: "Arham Shah",
+    title: "Lead of Arenda Risk Taking",
+    description: "",
+    imageUrl: "",
+    orientation: "left"
   },
  
 ];

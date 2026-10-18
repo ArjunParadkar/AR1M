@@ -6,7 +6,7 @@ const MobileNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Mobile navigation includes project categories as regular nav items
-  const mobileNavLists = ["Home", "AI", "Engineering", "Social Impact", "Labs", "Founders", "Contact"];
+  const mobileNavLists = ["Home", "AI", "Engineering", "Social Impact", "Founders", "Contact"];
 
   useEffect(() => {
     const root = document.documentElement;

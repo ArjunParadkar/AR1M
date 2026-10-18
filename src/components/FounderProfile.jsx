@@ -27,11 +27,21 @@ const FounderProfile = ({
   return (
     <div className={`flex items-center gap-8 py-8 md:ml-[4%] md:mr-[4%] ${className}`}>
       <div className={`flex-shrink-0 ${isImageLeft ? 'order-1' : 'order-2'}`}>
-        <img
-          src={imageUrl}
-          alt={`${name} - ${title}`}
-          className="w-64 h-64 rounded-full object-cover shadow-lg"
-        />
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={`${name} - ${title}`}
+            className="w-64 h-64 rounded-full object-cover shadow-lg"
+          />
+        ) : (
+          <div
+            aria-label={name}
+            className="w-64 h-64 rounded-full shadow-lg flex items-center justify-center text-6xl font-bold text-amber-200/80 bg-gradient-to-br from-zinc-800 to-zinc-950 border border-amber-300/30"
+            style={{ fontFamily: "'Orbitron', sans-serif" }}
+          >
+            {name.split(' ').map(w => w[0]).join('').slice(0, 2)}
+          </div>
+        )}
       </div>
 
       <div className={`flex-1 ${isImageLeft ? 'order-2' : 'order-1'}`}>

@@ -6,6 +6,7 @@ export async function submitContactToAppsScript({ name, email, subject, message 
   params.set('name', name || '');
   params.set('email', email || '');
   params.set('your-number', subject || ''); 
+  params.set('message', message || '');
 
   const response = await fetch(scriptURL, {
     method: 'POST',
