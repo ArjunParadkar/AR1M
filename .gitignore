@@ -28,3 +28,4 @@ dist-ssr
 
 # scene candidates from the Higgsfield review sessions
 .scene-review/
+.vercel
